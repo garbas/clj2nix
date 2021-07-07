@@ -6,10 +6,6 @@ let repos = [
         "https://repo.clojars.org/" ];
 
   in rec {
-      fetchmaven = pkgs.callPackage (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/NixOS/nixpkgs/ba5e2222458a52357a3ba5873d88779d5c223269/pkgs/build-support/fetchmavenartifact/default.nix";
-        sha512 = "05m7i8hbhyfz7p2f106mfbsasjf04svd9xkgc26pl3shljrk0dfacz39wiwzm6xqw7czgrsx745vciram7al621v7634nfdq3m1x88a";
-      }) {};
       makePaths = {extraClasspaths ? null}:
         (pkgs.lib.concatMap
           (dep:
@@ -32,7 +28,7 @@ let repos = [
       packages = [
   rec {
     name = "javax.inject/javax.inject";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "javax.inject";
       groupId = "javax.inject";
@@ -45,7 +41,7 @@ let repos = [
 
   rec {
     name = "data.json/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "data.json";
       groupId = "org.clojure";
@@ -58,7 +54,7 @@ let repos = [
 
   rec {
     name = "clojure/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "clojure";
       groupId = "org.clojure";
@@ -71,7 +67,7 @@ let repos = [
 
   rec {
     name = "commons-codec/commons-codec";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "commons-codec";
       groupId = "commons-codec";
@@ -84,7 +80,7 @@ let repos = [
 
   rec {
     name = "api/com.cognitect.aws";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "api";
       groupId = "com.cognitect.aws";
@@ -97,7 +93,7 @@ let repos = [
 
   rec {
     name = "tools.analyzer/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.analyzer";
       groupId = "org.clojure";
@@ -110,7 +106,7 @@ let repos = [
 
   rec {
     name = "plexus-component-annotations/org.codehaus.plexus";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "plexus-component-annotations";
       groupId = "org.codehaus.plexus";
@@ -123,7 +119,7 @@ let repos = [
 
   rec {
     name = "endpoints/com.cognitect.aws";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "endpoints";
       groupId = "com.cognitect.aws";
@@ -136,7 +132,7 @@ let repos = [
 
   rec {
     name = "error_prone_annotations/com.google.errorprone";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "error_prone_annotations";
       groupId = "com.google.errorprone";
@@ -149,7 +145,7 @@ let repos = [
 
   rec {
     name = "commons-lang3/org.apache.commons";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "commons-lang3";
       groupId = "org.apache.commons";
@@ -162,7 +158,7 @@ let repos = [
 
   rec {
     name = "tools.logging/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.logging";
       groupId = "org.clojure";
@@ -175,7 +171,7 @@ let repos = [
 
   rec {
     name = "core.specs.alpha/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "core.specs.alpha";
       groupId = "org.clojure";
@@ -188,7 +184,7 @@ let repos = [
 
   rec {
     name = "spec.alpha/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "spec.alpha";
       groupId = "org.clojure";
@@ -201,7 +197,7 @@ let repos = [
 
   rec {
     name = "tools.cli/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.cli";
       groupId = "org.clojure";
@@ -214,7 +210,7 @@ let repos = [
 
   rec {
     name = "guice/com.google.inject";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "guice";
       groupId = "com.google.inject";
@@ -227,7 +223,7 @@ let repos = [
 
   rec {
     name = "animal-sniffer-annotations/org.codehaus.mojo";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "animal-sniffer-annotations";
       groupId = "org.codehaus.mojo";
@@ -240,7 +236,7 @@ let repos = [
 
   rec {
     name = "jetty-http/org.eclipse.jetty";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jetty-http";
       groupId = "org.eclipse.jetty";
@@ -253,7 +249,7 @@ let repos = [
 
   rec {
     name = "jetty-util/org.eclipse.jetty";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jetty-util";
       groupId = "org.eclipse.jetty";
@@ -266,7 +262,7 @@ let repos = [
 
   rec {
     name = "jcl-over-slf4j/org.slf4j";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jcl-over-slf4j";
       groupId = "org.slf4j";
@@ -279,7 +275,7 @@ let repos = [
 
   rec {
     name = "tools.analyzer.jvm/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.analyzer.jvm";
       groupId = "org.clojure";
@@ -292,7 +288,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-transport-http/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-transport-http";
       groupId = "org.apache.maven.resolver";
@@ -305,7 +301,7 @@ let repos = [
 
   rec {
     name = "maven-model-builder/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-model-builder";
       groupId = "org.apache.maven";
@@ -318,7 +314,7 @@ let repos = [
 
   rec {
     name = "plexus-utils/org.codehaus.plexus";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "plexus-utils";
       groupId = "org.codehaus.plexus";
@@ -331,7 +327,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-transport-file/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-transport-file";
       groupId = "org.apache.maven.resolver";
@@ -344,7 +340,7 @@ let repos = [
 
   rec {
     name = "org.eclipse.sisu.plexus/org.eclipse.sisu";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "org.eclipse.sisu.plexus";
       groupId = "org.eclipse.sisu";
@@ -357,7 +353,7 @@ let repos = [
 
   rec {
     name = "commons-io/commons-io";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "commons-io";
       groupId = "commons-io";
@@ -370,7 +366,7 @@ let repos = [
 
   rec {
     name = "maven-settings-builder/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-settings-builder";
       groupId = "org.apache.maven";
@@ -383,7 +379,7 @@ let repos = [
 
   rec {
     name = "listenablefuture/com.google.guava";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "listenablefuture";
       groupId = "com.google.guava";
@@ -396,7 +392,7 @@ let repos = [
 
   rec {
     name = "asm/org.ow2.asm";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "asm";
       groupId = "org.ow2.asm";
@@ -409,7 +405,7 @@ let repos = [
 
   rec {
     name = "cdi-api/javax.enterprise";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "cdi-api";
       groupId = "javax.enterprise";
@@ -422,7 +418,7 @@ let repos = [
 
   rec {
     name = "maven-settings/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-settings";
       groupId = "org.apache.maven";
@@ -435,7 +431,7 @@ let repos = [
 
   rec {
     name = "httpcore/org.apache.httpcomponents";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "httpcore";
       groupId = "org.apache.httpcomponents";
@@ -448,7 +444,7 @@ let repos = [
 
   rec {
     name = "slf4j-simple/org.slf4j";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "slf4j-simple";
       groupId = "org.slf4j";
@@ -461,7 +457,7 @@ let repos = [
 
   rec {
     name = "maven-core/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-core";
       groupId = "org.apache.maven";
@@ -474,7 +470,7 @@ let repos = [
 
   rec {
     name = "plexus-cipher/org.sonatype.plexus";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "plexus-cipher";
       groupId = "org.sonatype.plexus";
@@ -487,7 +483,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-api/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-api";
       groupId = "org.apache.maven.resolver";
@@ -500,7 +496,7 @@ let repos = [
 
   rec {
     name = "jsr250-api/javax.annotation";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jsr250-api";
       groupId = "javax.annotation";
@@ -513,7 +509,7 @@ let repos = [
 
   rec {
     name = "http-client/com.cognitect";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "http-client";
       groupId = "com.cognitect";
@@ -526,7 +522,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-provider/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-provider";
       groupId = "org.apache.maven";
@@ -539,7 +535,7 @@ let repos = [
 
   rec {
     name = "maven-shared-utils/org.apache.maven.shared";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-shared-utils";
       groupId = "org.apache.maven.shared";
@@ -552,7 +548,7 @@ let repos = [
 
   rec {
     name = "tools.deps.alpha/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.deps.alpha";
       groupId = "org.clojure";
@@ -565,7 +561,7 @@ let repos = [
 
   rec {
     name = "failureaccess/com.google.guava";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "failureaccess";
       groupId = "com.google.guava";
@@ -578,7 +574,7 @@ let repos = [
 
   rec {
     name = "guava/com.google.guava";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "guava";
       groupId = "com.google.guava";
@@ -591,7 +587,7 @@ let repos = [
 
   rec {
     name = "data.xml/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "data.xml";
       groupId = "org.clojure";
@@ -604,7 +600,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-spi/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-spi";
       groupId = "org.apache.maven.resolver";
@@ -617,7 +613,7 @@ let repos = [
 
   rec {
     name = "j2objc-annotations/com.google.j2objc";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "j2objc-annotations";
       groupId = "com.google.j2objc";
@@ -630,7 +626,7 @@ let repos = [
 
   rec {
     name = "plexus-classworlds/org.codehaus.plexus";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "plexus-classworlds";
       groupId = "org.codehaus.plexus";
@@ -643,7 +639,7 @@ let repos = [
 
   rec {
     name = "plexus-sec-dispatcher/org.sonatype.plexus";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "plexus-sec-dispatcher";
       groupId = "org.sonatype.plexus";
@@ -656,7 +652,7 @@ let repos = [
 
   rec {
     name = "plexus-interpolation/org.codehaus.plexus";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "plexus-interpolation";
       groupId = "org.codehaus.plexus";
@@ -669,7 +665,7 @@ let repos = [
 
   rec {
     name = "httpclient/org.apache.httpcomponents";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "httpclient";
       groupId = "org.apache.httpcomponents";
@@ -682,7 +678,7 @@ let repos = [
 
   rec {
     name = "checker-qual/org.checkerframework";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "checker-qual";
       groupId = "org.checkerframework";
@@ -695,7 +691,7 @@ let repos = [
 
   rec {
     name = "jetty-client/org.eclipse.jetty";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jetty-client";
       groupId = "org.eclipse.jetty";
@@ -708,7 +704,7 @@ let repos = [
 
   rec {
     name = "jetty-io/org.eclipse.jetty";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jetty-io";
       groupId = "org.eclipse.jetty";
@@ -721,7 +717,7 @@ let repos = [
 
   rec {
     name = "tools.reader/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.reader";
       groupId = "org.clojure";
@@ -734,7 +730,7 @@ let repos = [
 
   rec {
     name = "tools.gitlibs/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "tools.gitlibs";
       groupId = "org.clojure";
@@ -747,7 +743,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-connector-basic/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-connector-basic";
       groupId = "org.apache.maven.resolver";
@@ -760,7 +756,7 @@ let repos = [
 
   rec {
     name = "s3/com.cognitect.aws";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "s3";
       groupId = "com.cognitect.aws";
@@ -773,7 +769,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-impl/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-impl";
       groupId = "org.apache.maven.resolver";
@@ -786,7 +782,7 @@ let repos = [
 
   rec {
     name = "slf4j-api/org.slf4j";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "slf4j-api";
       groupId = "org.slf4j";
@@ -799,7 +795,7 @@ let repos = [
 
   rec {
     name = "maven-model/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-model";
       groupId = "org.apache.maven";
@@ -812,7 +808,7 @@ let repos = [
 
   rec {
     name = "org.eclipse.sisu.inject/org.eclipse.sisu";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "org.eclipse.sisu.inject";
       groupId = "org.eclipse.sisu";
@@ -825,7 +821,7 @@ let repos = [
 
   rec {
     name = "maven-resolver-util/org.apache.maven.resolver";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-resolver-util";
       groupId = "org.apache.maven.resolver";
@@ -838,7 +834,7 @@ let repos = [
 
   rec {
     name = "core.memoize/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "core.memoize";
       groupId = "org.clojure";
@@ -851,7 +847,7 @@ let repos = [
 
   rec {
     name = "maven-repository-metadata/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-repository-metadata";
       groupId = "org.apache.maven";
@@ -864,7 +860,7 @@ let repos = [
 
   rec {
     name = "data.priority-map/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "data.priority-map";
       groupId = "org.clojure";
@@ -877,7 +873,7 @@ let repos = [
 
   rec {
     name = "aopalliance/aopalliance";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "aopalliance";
       groupId = "aopalliance";
@@ -890,7 +886,7 @@ let repos = [
 
   rec {
     name = "maven-builder-support/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-builder-support";
       groupId = "org.apache.maven";
@@ -903,7 +899,7 @@ let repos = [
 
   rec {
     name = "jsr305/com.google.code.findbugs";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "jsr305";
       groupId = "com.google.code.findbugs";
@@ -916,7 +912,7 @@ let repos = [
 
   rec {
     name = "core.cache/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "core.cache";
       groupId = "org.clojure";
@@ -929,7 +925,7 @@ let repos = [
 
   rec {
     name = "maven-plugin-api/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-plugin-api";
       groupId = "org.apache.maven";
@@ -942,7 +938,7 @@ let repos = [
 
   rec {
     name = "core.async/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "core.async";
       groupId = "org.clojure";
@@ -955,7 +951,7 @@ let repos = [
 
   rec {
     name = "maven-artifact/org.apache.maven";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "maven-artifact";
       groupId = "org.apache.maven";
@@ -968,7 +964,7 @@ let repos = [
 
   rec {
     name = "data.codec/org.clojure";
-    src = fetchmaven {
+    src = pkgs.fetchMavenArtifact {
       inherit repos;
       artifactId = "data.codec";
       groupId = "org.clojure";
